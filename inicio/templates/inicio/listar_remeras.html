@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title_head %}
+<title>Remeras</title>
+{% endblock title_head %}
+
+{% block h1_header %}
+<h1>Remeras</h1>
+{% endblock h1_header %}
+
+{% block contenido %}
+<button>
+    <a class="btn btn-primary" href={% url 'inicio:publicar_remera' %}>Publicar Remera</a>
+</button>
+<form action="" method="get">
+    {{formulario}}
+    <button>Buscar</button>
+</form>
+
+<h2>Remeras Publicadas</h2>
+{% for remera in remeras %}
+<li> Color: {{remera.color}} - Marca: {{remera.marca}} - Talle: {{remera.talle}} - Fecha de publicacion: {{remera.fecha_publicacion}}</li>
+{% endfor %}
+{% endblock contenido %}

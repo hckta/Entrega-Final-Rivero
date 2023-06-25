@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title_head %}
+<title>Calzados</title>
+{% endblock title_head %}
+
+{% block h1_header %}
+<h1>Calzados</h1>
+{% endblock h1_header %}
+
+{% block contenido %}
+<button>
+    <a class="btn btn-primary" href={% url 'inicio:publicar_calzado' %}>Publicar Calzado</a>
+</button>
+<form action="" method="get">
+    {{formulario}}
+    <button>Buscar</button>
+</form>
+
+<h2>Calzados Publicados</h2>
+{% for calzado in calzados %}
+<li> Color: {{calzado.color}} - Marca: {{calzado.marca}} - Talle: {{calzado.talle}} - Fecha de publicacion: {{calzado.fecha_publicacion}}</li>
+{% endfor %}
+{% endblock contenido %}

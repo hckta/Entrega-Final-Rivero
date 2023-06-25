@@ -23,9 +23,12 @@
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
                 <a class="navbar-brand" href={% url 'inicio:inicio' %}>Inicio</a>
-                <a class="btn btn-primary" href={% url 'inicio:publicar_pantalon' %}>Publicar Pantalon</a>
+                {% comment %} <a class="btn btn-primary" href={% url 'inicio:publicar_pantalon' %}>Publicar Pantalon</a>
                 <a class="btn btn-primary" href={% url 'inicio:publicar_remera' %}>Publicar Remera</a>
-                <a class="btn btn-primary" href={% url 'inicio:publicar_calzado' %}>Publicar Calzado</a>
+                <a class="btn btn-primary" href={% url 'inicio:publicar_calzado' %}>Publicar Calzado</a> {% endcomment %}
+                <a class="btn btn-primary" href={% url 'inicio:listar_pantalones' %}>Pantalones</a>
+                <a class="btn btn-primary" href={% url 'inicio:listar_remeras' %}>Remeras</a>
+                <a class="btn btn-primary" href={% url 'inicio:listar_calzados' %}>Calzados</a>
             </div>
         </nav>
         <!-- Masthead-->
