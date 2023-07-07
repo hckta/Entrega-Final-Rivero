@@ -18,6 +18,9 @@
 
 <h2>Remeras Publicadas</h2>
 {% for remera in remeras %}
-<li> Color: {{remera.color}} - Marca: {{remera.marca}} - Talle: {{remera.talle}} - Fecha de publicacion: {{remera.fecha_publicacion}}</li>
+<li> 
+    Color: {{remera.color}} - Marca: {{remera.marca}} - Talle: {{remera.talle}} - Fecha de publicacion: {{remera.fecha_publicacion}}
+<a href={% url 'inicio:eliminar_remera' remera.id %}>Eliminar</a>
+</li>
 {% endfor %}
 {% endblock contenido %}

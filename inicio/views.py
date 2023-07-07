@@ -77,3 +77,19 @@ def listar_calzados(request):
         
     formulario = BuscarCalzadoForm()    
     return render(request,'inicio/listar_calzados.html',{'formulario':formulario, 'calzados':listado_calzado} )
+
+def eliminar_pantalon(request, pantalon_id):
+    pantalon = Pantalon.objects.get(id=pantalon_id)
+    pantalon.delete()
+    
+    return redirect('inicio:listar_pantalones')
+    
+def eliminar_remera(request, remera_id):
+    remera = Remera.objects.get(id=remera_id)
+    remera.delete()
+    return redirect('inicio:listar_remeras')
+    
+def eliminar_calzado(request, calzado_id):
+    calzado = Calzado.objects.get(id=calzado_id)
+    calzado.delete()
+    return redirect('inicio:listar_calzados')

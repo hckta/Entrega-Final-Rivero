@@ -18,6 +18,9 @@
 
 <h2>Calzados Publicados</h2>
 {% for calzado in calzados %}
-<li> Color: {{calzado.color}} - Marca: {{calzado.marca}} - Talle: {{calzado.talle}} - Fecha de publicacion: {{calzado.fecha_publicacion}}</li>
+<li> 
+    Color: {{calzado.color}} - Marca: {{calzado.marca}} - Talle: {{calzado.talle}} - Fecha de publicacion: {{calzado.fecha_publicacion}}
+<a href={% url 'inicio:eliminar_calzado' calzado.id %}>Eliminar</a>
+</li>
 {% endfor %}
 {% endblock contenido %}

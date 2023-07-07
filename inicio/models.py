@@ -12,7 +12,7 @@ class Pantalon(models.Model):
     marca = models.CharField(max_length=10)
     talle = models.CharField(max_length=2)
     fecha_publicacion = models.DateField(null=True)
-    
+        
     
 class Remera(models.Model):
     

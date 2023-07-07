@@ -18,6 +18,9 @@
 
 <h2>Pantalones Publicados</h2>
 {% for pantalon in pantalones %}
-<li> Color: {{pantalon.color}} - Marca: {{pantalon.marca}} - Talle: {{pantalon.talle}} - Fecha de publicacion: {{pantalon.fecha_publicacion}}</li>
+<li> 
+    Color: {{pantalon.color}} - Marca: {{pantalon.marca}} - Talle: {{pantalon.talle}} - Fecha de publicacion: {{pantalon.fecha_publicacion}}
+<a href={% url 'inicio:eliminar_pantalon' pantalon.id %}>Eliminar</a>
+</li>
 {% endfor %}
 {% endblock contenido %}
