@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title_head %}
+<title>Calzado</title>
+{% endblock title_head %}
+
+{% block h1_header %}
+Descripcion Calzado
+{% endblock h1_header %}
+
+{% block contenido %}
+<li>Color: {{calzado.color}}</li>
+<li>Marca: {{calzado.marca}}</li>
+<li>Talle: {{calzado.talle}}</li>
+<li>Fecha de Publicacion: {{calzado.fecha_publicacion}}</li>
+<li>Desripcion: {{calzado.descripcion}}</li>
+{% endblock contenido %}

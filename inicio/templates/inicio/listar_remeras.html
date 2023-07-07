@@ -22,6 +22,7 @@
     Color: {{remera.color}} - Marca: {{remera.marca}} - Talle: {{remera.talle}} - Fecha de publicacion: {{remera.fecha_publicacion}}
     <button> <a class="navbar-brand" href={% url 'inicio:eliminar_remera' remera.id %}>Eliminar</a> </button>
     <button> <a class="navbar-brand" href={% url 'inicio:modificar_remera' remera.id %}>Modificar</a> </button>
+    <button> <a class="navbar-brand" href={% url 'inicio:mostrar_remera' remera.id %}>Ver Mas</a> </button>
 
 </li>
 {% endfor %}

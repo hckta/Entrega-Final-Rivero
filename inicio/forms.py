@@ -10,6 +10,8 @@ class PublicarPantalonForm(forms.Form):
     color = forms.CharField(max_length=15)
     marca = forms.CharField(max_length=10)
     talle = forms.CharField(max_length=2)
+    descripcion = forms.CharField(max_length=20)
+    
     fecha_publicacion = forms.DateField(required=False, widget=DateInput (attrs={'type': 'date'}))
     
 class PublicarRemeraForm(forms.Form):
@@ -17,6 +19,7 @@ class PublicarRemeraForm(forms.Form):
     color = forms.CharField(max_length=15)
     marca = forms.CharField(max_length=10)
     talle = forms.CharField(max_length=2)
+    descripcion = forms.CharField(max_length=20)
     fecha_publicacion = forms.DateField(required=False, widget=DateInput (attrs={'type': 'date'}))
     
     
@@ -25,6 +28,7 @@ class PublicarCalzadoForm(forms.Form):
     color = forms.CharField(max_length=15)
     marca = forms.CharField(max_length=10)
     talle = forms.IntegerField()
+    descripcion = forms.CharField(max_length=20)
     fecha_publicacion = forms.DateField(required=False, widget=DateInput (attrs={'type': 'date'}))
     
 #Formularios de Busqueda
@@ -44,6 +48,7 @@ class ModificarPantalonForm(forms.Form):
     color = forms.CharField(max_length=15)
     marca = forms.CharField(max_length=10)
     talle = forms.CharField(max_length=2)
+    descripcion = forms.CharField(max_length=20)
     ...
     
 class ModificarRemeraForm(ModificarPantalonForm):

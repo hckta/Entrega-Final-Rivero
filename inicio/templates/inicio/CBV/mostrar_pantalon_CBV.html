@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title_head %}
+<title>Pantalon</title>
+{% endblock title_head %}
+
+{% block h1_header %}
+Descripcion Pantalon
+{% endblock h1_header %}
+
+{% block contenido %}
+<li> Color: {{pantalon.color}}</li>
+<li> Marca: {{pantalon.marca}}</li>
+<li> Talle: {{pantalon.talle}}</li>
+<li> Fecha de Publicacion: {{pantalon.fecha_publicacion}}</li>
+<li> Desripcion: {{pantalon.descripcion}}</li>
+
+{% endblock contenido %}

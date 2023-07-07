@@ -1,18 +1,20 @@
 from django.shortcuts import render, redirect
 from inicio.forms import PublicarPantalonForm, PublicarRemeraForm, PublicarCalzadoForm, BuscarPantalonForm, BuscarRemeraForm, BuscarCalzadoForm, ModificarPantalonForm, ModificarRemeraForm, ModificarCalzadoForm
 from inicio.models import Pantalon, Remera, Calzado
+from django.views.generic.detail import DetailView
 # Create your views here.
 
 
 def inicio(request):
     return render(request, 'inicio/inicio.html')
 
+#Vistas de Publicado
 def publicar_pantalon(request):
     if request.method == 'POST':
         formulario = PublicarPantalonForm(request.POST)
         if formulario.is_valid():
             info = formulario.cleaned_data
-            pantalon = Pantalon(color=info['color'],marca=info['marca'],talle=info['talle'],fecha_publicacion=info['fecha_publicacion'])
+            pantalon = Pantalon(color=info['color'],marca=info['marca'],talle=info['talle'],descripcion=info['descripcion'],fecha_publicacion=info['fecha_publicacion'])
             pantalon.save()
             return redirect('inicio:listar_pantalones',) 
         else:
@@ -27,7 +29,7 @@ def publicar_remera(request):
         formulario = PublicarRemeraForm(request.POST)
         if formulario.is_valid():
             info = formulario.cleaned_data
-            remera = Remera(color=info['color'],marca=info['marca'],talle=info['talle'],fecha_publicacion=info['fecha_publicacion'])
+            remera = Remera(color=info['color'],marca=info['marca'],talle=info['talle'],descripcion=info['descripcion'],fecha_publicacion=info['fecha_publicacion'])
             remera.save()
             return redirect('inicio:listar_remeras') 
         else:
@@ -42,7 +44,7 @@ def publicar_calzado(request):
         formulario = PublicarCalzadoForm(request.POST)
         if formulario.is_valid():
             info = formulario.cleaned_data
-            calzado = Calzado(color=info['color'],marca=info['marca'],talle=info['talle'],fecha_publicacion=info['fecha_publicacion'])
+            calzado = Calzado(color=info['color'],marca=info['marca'],talle=info['talle'],descripcion=info['descripcion'],fecha_publicacion=info['fecha_publicacion'])
             calzado.save()
             return redirect('inicio:listar_calzados')  
         else:
@@ -51,6 +53,7 @@ def publicar_calzado(request):
     formulario = PublicarCalzadoForm()
     return render(request,'inicio/publicar_calzado.html',{'formulario':formulario})
 
+#Vistas de listados
 def listar_pantalones(request):
     formulario = BuscarPantalonForm(request.GET)
     if formulario.is_valid():
@@ -78,6 +81,7 @@ def listar_calzados(request):
     formulario = BuscarCalzadoForm()    
     return render(request,'inicio/listar_calzados.html',{'formulario':formulario, 'calzados':listado_calzado} )
 
+#Vistas para eliminar
 def eliminar_pantalon(request, pantalon_id):
     pantalon = Pantalon.objects.get(id=pantalon_id)
     pantalon.delete()
@@ -94,6 +98,8 @@ def eliminar_calzado(request, calzado_id):
     calzado.delete()
     return redirect('inicio:listar_calzados')
 
+#Vistas de modificar
+
 def modificar_pantalon(request, pantalon_id):
     pantalon_a_modificar = Pantalon.objects.get(id=pantalon_id)
     
@@ -104,6 +110,7 @@ def modificar_pantalon(request, pantalon_id):
             pantalon_a_modificar.color = info['color']
             pantalon_a_modificar.marca = info['marca']
             pantalon_a_modificar.talle = info['talle']
+            pantalon_a_modificar.descripcion = info['descripcion']
             pantalon_a_modificar.save()
             return redirect('inicio:listar_pantalones')
         else:
@@ -122,6 +129,7 @@ def modificar_remera(request, remera_id):
             remera_a_modificar.color = info['color']
             remera_a_modificar.marca = info['marca']
             remera_a_modificar.talle = info['talle']
+            remera_a_modificar.descripcion = info['descripcion']
             remera_a_modificar.save()
             return redirect('inicio:listar_remeras')
         else:
@@ -139,9 +147,25 @@ def modificar_calzado(request, calzado_id):
             calzado_a_modificar.color = info['color']
             calzado_a_modificar.marca = info['marca']
             calzado_a_modificar.talle = info['talle']
+            calzado_a_modificar.descripcion = info['descripcion']
             calzado_a_modificar.save()
             return redirect('inicio:listar_calzados')
         else:
             return render(request, 'inicio/modificar_calzado.html', {'formulario': formulario})
     formulario = ModificarCalzadoForm(initial={'color': calzado_a_modificar.color, 'marca': calzado_a_modificar.marca, 'talle': calzado_a_modificar.talle})
     return render(request, 'inicio/modificar_calzado.html', {'formulario': formulario})
+
+
+# Mostrar descripciones con Clase Basada en Vistas
+
+class MostrarPantalon(DetailView):
+    model = Pantalon
+    template_name = "inicio/CBV/mostrar_pantalon_CBV.html"
+    
+class MostrarRemera(DetailView):
+    model = Remera
+    template_name = "inicio/CBV/mostrar_remera_CBV.html"
+    
+class MostrarCalzado(DetailView):
+    model = Calzado
+    template_name = "inicio/CBV/mostrar_calzado_CBV.html"

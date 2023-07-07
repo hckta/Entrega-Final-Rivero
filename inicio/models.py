@@ -11,6 +11,7 @@ class Pantalon(models.Model):
     color = models.CharField(max_length=15)
     marca = models.CharField(max_length=10)
     talle = models.CharField(max_length=2)
+    descripcion = models.TextField(null=True)
     fecha_publicacion = models.DateField(null=True)
         
     
@@ -19,6 +20,7 @@ class Remera(models.Model):
     color = models.CharField(max_length=15)
     marca = models.CharField(max_length=10)
     talle = models.CharField(max_length=2)
+    descripcion = models.TextField(null=True)
     fecha_publicacion = models.DateField(null=True)
     
 class Calzado(models.Model):
@@ -26,4 +28,5 @@ class Calzado(models.Model):
     color = models.CharField(max_length=15)
     marca = models.CharField(max_length=10)
     talle = models.IntegerField()
+    descripcion = models.TextField(null=True)
     fecha_publicacion = models.DateField(null=True)

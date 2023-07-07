@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title_head %}
+<title>Remera</title>
+{% endblock title_head %}
+
+{% block h1_header %}
+Descripcion Remera
+{% endblock h1_header %}
+
+{% block contenido %}
+<li>Color: {{remera.color}}</li>
+<li> Marca: {{remera.marca}}</li>
+<li>Talle: {{remera.talle}}</li>
+<li>Fecha de Publicacion: {{remera.fecha_publicacion}}</li>
+<li>Desripcion: {{remera.descripcion}}</li>
+{% endblock contenido %}
