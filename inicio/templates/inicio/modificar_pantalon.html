@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title_head %}
+<title>Modificar Pantalon</title>
+{% endblock title_head %}
+
+{% block h1_header %}
+Modificar Pantalon
+{% endblock h1_header %}
+
+{% block contenido %}
+<p>
+    {{mensaje}}
+</p>
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+        {{formulario}}
+    </table>
+    <button>Guardar cambios</button>
+</form>
+{% endblock contenido %}

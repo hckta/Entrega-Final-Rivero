@@ -20,7 +20,8 @@
 {% for pantalon in pantalones %}
 <li> 
     Color: {{pantalon.color}} - Marca: {{pantalon.marca}} - Talle: {{pantalon.talle}} - Fecha de publicacion: {{pantalon.fecha_publicacion}}
-<a href={% url 'inicio:eliminar_pantalon' pantalon.id %}>Eliminar</a>
+    <button> <a class="navbar-brand" href={% url 'inicio:eliminar_pantalon' pantalon.id %}>Eliminar</a> </button>
+    <button> <a class="navbar-brand" href={% url 'inicio:modificar_pantalon' pantalon.id %}>Modificar</a> </button>
 </li>
 {% endfor %}
 {% endblock contenido %}

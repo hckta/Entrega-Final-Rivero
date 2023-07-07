@@ -14,5 +14,8 @@ urlpatterns = [
     path('pantalon/eliminar/<int:pantalon_id>/', views.eliminar_pantalon, name='eliminar_pantalon'),
     path('remera/eliminar/<int:remera_id>/', views.eliminar_remera, name='eliminar_remera'),
     path('calzado/eliminar/<int:calzado_id>/', views.eliminar_calzado, name='eliminar_calzado'),
+    path('pantalon/modificar/<int:pantalon_id>/', views.modificar_pantalon, name='modificar_pantalon'),
+    path('remera/modificar/<int:remera_id>/', views.modificar_remera, name='modificar_remera'),
+    path('calzado/modificar/<int:calzado_id>/', views.modificar_calzado, name='modificar_calzado'),
 
 ]
