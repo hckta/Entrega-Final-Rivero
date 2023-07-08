@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from inicio.forms import PublicarPantalonForm, PublicarRemeraForm, PublicarCalzadoForm, BuscarPantalonForm, BuscarRemeraForm, BuscarCalzadoForm, ModificarPantalonForm, ModificarRemeraForm, ModificarCalzadoForm
 from inicio.models import Pantalon, Remera, Calzado
 from django.views.generic.detail import DetailView
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 
@@ -9,6 +11,8 @@ def inicio(request):
     return render(request, 'inicio/inicio.html')
 
 #Vistas de Publicado
+
+@login_required
 def publicar_pantalon(request):
     if request.method == 'POST':
         formulario = PublicarPantalonForm(request.POST)
@@ -23,7 +27,7 @@ def publicar_pantalon(request):
     formulario = PublicarPantalonForm()
     return render(request,'inicio/publicar_pantalon.html', {'formulario':formulario})
     
-    
+@login_required    
 def publicar_remera(request):
     if request.method == 'POST':
         formulario = PublicarRemeraForm(request.POST)
@@ -38,7 +42,7 @@ def publicar_remera(request):
     formulario = PublicarRemeraForm()
     return render(request,'inicio/publicar_remera.html', {'formulario':formulario})
     
-    
+@login_required    
 def publicar_calzado(request):
     if request.method == 'POST':
         formulario = PublicarCalzadoForm(request.POST)
@@ -54,6 +58,7 @@ def publicar_calzado(request):
     return render(request,'inicio/publicar_calzado.html',{'formulario':formulario})
 
 #Vistas de listados
+@login_required
 def listar_pantalones(request):
     formulario = BuscarPantalonForm(request.GET)
     if formulario.is_valid():
@@ -63,6 +68,7 @@ def listar_pantalones(request):
     formulario = BuscarPantalonForm()
     return render(request,'inicio/listar_pantalones.html',{'formulario':formulario, 'pantalones':listado_pantalones})
 
+@login_required
 def listar_remeras(request):
     formulario = BuscarRemeraForm(request.GET)
     if formulario.is_valid():
@@ -72,6 +78,7 @@ def listar_remeras(request):
     formulario = BuscarRemeraForm()
     return render(request,'inicio/listar_remeras.html',{'formulario':formulario, 'remeras':listado_remeras})
 
+@login_required
 def listar_calzados(request):
     formulario = BuscarCalzadoForm(request.GET)
     if formulario.is_valid():
@@ -82,24 +89,28 @@ def listar_calzados(request):
     return render(request,'inicio/listar_calzados.html',{'formulario':formulario, 'calzados':listado_calzado} )
 
 #Vistas para eliminar
+
+@login_required
 def eliminar_pantalon(request, pantalon_id):
     pantalon = Pantalon.objects.get(id=pantalon_id)
     pantalon.delete()
     
     return redirect('inicio:listar_pantalones')
-    
+
+@login_required    
 def eliminar_remera(request, remera_id):
     remera = Remera.objects.get(id=remera_id)
     remera.delete()
     return redirect('inicio:listar_remeras')
-    
+
+@login_required    
 def eliminar_calzado(request, calzado_id):
     calzado = Calzado.objects.get(id=calzado_id)
     calzado.delete()
     return redirect('inicio:listar_calzados')
 
 #Vistas de modificar
-
+@login_required
 def modificar_pantalon(request, pantalon_id):
     pantalon_a_modificar = Pantalon.objects.get(id=pantalon_id)
     
@@ -118,7 +129,7 @@ def modificar_pantalon(request, pantalon_id):
     formulario = ModificarPantalonForm(initial={'color': pantalon_a_modificar.color, 'marca': pantalon_a_modificar.marca, 'talle': pantalon_a_modificar.talle})
     return render(request, 'inicio/modificar_pantalon.html', {'formulario': formulario})
 
- 
+@login_required 
 def modificar_remera(request, remera_id):
     remera_a_modificar = Remera.objects.get(id=remera_id)
     
@@ -136,7 +147,8 @@ def modificar_remera(request, remera_id):
             return render(request, 'inicio/modificar_remera.html', {'formulario': formulario})
     formulario = ModificarRemeraForm(initial={'color': remera_a_modificar.color, 'marca': remera_a_modificar.marca, 'talle': remera_a_modificar.talle})
     return render(request, 'inicio/modificar_remera.html', {'formulario': formulario})
-    
+
+@login_required    
 def modificar_calzado(request, calzado_id):
     calzado_a_modificar = Calzado.objects.get(id=calzado_id)
     
@@ -158,14 +170,15 @@ def modificar_calzado(request, calzado_id):
 
 # Mostrar descripciones con Clase Basada en Vistas
 
-class MostrarPantalon(DetailView):
+class MostrarPantalon(LoginRequiredMixin,DetailView):
     model = Pantalon
     template_name = "inicio/CBV/mostrar_pantalon_CBV.html"
     
-class MostrarRemera(DetailView):
+class MostrarRemera(LoginRequiredMixin,DetailView):
     model = Remera
     template_name = "inicio/CBV/mostrar_remera_CBV.html"
     
-class MostrarCalzado(DetailView):
+class MostrarCalzado(LoginRequiredMixin,DetailView):
     model = Calzado
     template_name = "inicio/CBV/mostrar_calzado_CBV.html"
+
