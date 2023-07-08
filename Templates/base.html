@@ -30,6 +30,9 @@
                 <a class="btn btn-primary" href={% url 'inicio:listar_remeras' %}>Remeras</a>
                 <a class="btn btn-primary" href={% url 'inicio:listar_calzados' %}>Calzados</a>
                 {% if request.user.is_authenticated %}
+                {% if request.user.infoextra.avatar %}
+                <img src={{request.user.infoextra.avatar.url}} alt="" height='70mp'>
+                {% endif %}
                 <a class="navbar-brand" href="{% url 'usuario:mostrar_perfil' pk=request.user.pk %}">{{ request.user.username }}</a>
                 <a class="btn btn-secondary" href={% url 'usuario:logout' %}>Logout</a>
                 {% else %}
