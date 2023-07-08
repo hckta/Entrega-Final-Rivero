@@ -15,6 +15,7 @@ Modificar Pantalon
     {% csrf_token %}
     <table>
         {{formulario}}
+        {{formulario.media| safe}}
     </table>
     <button>Guardar cambios</button>
 </form>

@@ -15,6 +15,7 @@ Publicar Calzado
     {% csrf_token %}
     <table>
         {{formulario}}
+        {{form.media| safe}}
     </table>
     <button>Publicar</button>
 </form>

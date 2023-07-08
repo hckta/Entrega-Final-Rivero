@@ -11,7 +11,7 @@ Descripcion Pantalon
 <li> Color: {{pantalon.color}}</li>
 <li> Marca: {{pantalon.marca}}</li>
 <li> Talle: {{pantalon.talle}}</li>
-<li> Fecha de Publicacion: {{pantalon.fecha_publicacion}}</li>
-<li> Desripcion: {{pantalon.descripcion}}</li>
+{% comment %} <li> Fecha de Publicacion: {{pantalon.fecha_publicacion}}</li> {% endcomment %}
+<li> Desripcion: {{pantalon.descripcion| safe}}</li>
 
 {% endblock contenido %}

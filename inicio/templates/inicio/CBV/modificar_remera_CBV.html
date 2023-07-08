@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block title_head %}
-<title>Publicar Pantalon</title>
+<title>Modificar Remera</title>
 {% endblock title_head %}
 
 {% block h1_header %}
-Publicar Pantalon
+Modificar Remera
 {% endblock h1_header %}
 
 {% block contenido %}
@@ -14,10 +14,9 @@ Publicar Pantalon
 <form action="" method="post">
     {% csrf_token %}
     <table>
-        {{formulario}}
-        {{form.media| safe}}
+        {{form}}
+        {{form.media | safe}}
     </table>
-    <button>Publicar</button>
+    <button>Guardar cambios</button>
 </form>
 {% endblock contenido %}
-

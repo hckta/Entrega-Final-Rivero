@@ -19,7 +19,7 @@
 <h2>Pantalones Publicados</h2>
 {% for pantalon in pantalones %}
 <li> 
-    Color: {{pantalon.color}} - Marca: {{pantalon.marca}} - Talle: {{pantalon.talle}} - Fecha de publicacion: {{pantalon.fecha_publicacion}}
+    Color: {{pantalon.color}} - Marca: {{pantalon.marca}} - Talle: {{pantalon.talle}}
     <button> <a class="navbar-brand" href={% url 'inicio:eliminar_pantalon' pantalon.id %}>Eliminar</a> </button>
     <button> <a class="navbar-brand" href={% url 'inicio:modificar_pantalon' pantalon.id %}>Modificar</a> </button>
     <button> <a class="navbar-brand" href={% url 'inicio:mostrar_pantalon' pantalon.id %}>Ver Mas</a> </button>

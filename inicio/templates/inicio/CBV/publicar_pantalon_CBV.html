@@ -14,10 +14,9 @@ Publicar Pantalon
 <form action="" method="post">
     {% csrf_token %}
     <table>
-        {{formulario}}
-        {{form.media| safe}}
+        {{form}}
+        {{form.media}}
     </table>
     <button>Publicar</button>
 </form>
 {% endblock contenido %}
-
