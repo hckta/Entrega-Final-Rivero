@@ -17,6 +17,7 @@
 </form>
 
 <h2>Remeras Publicadas</h2>
+{% if remeras %}
 {% for remera in remeras %}
 <li> 
     Color: {{remera.color}} - Marca: {{remera.marca}} - Talle: {{remera.talle}} - Fecha de publicacion: {{remera.fecha_publicacion}}
@@ -26,4 +27,7 @@
 
 </li>
 {% endfor %}
+{% else %}
+<p>No se encontraron datos cargados.</p>
+{% endif %}
 {% endblock contenido %}

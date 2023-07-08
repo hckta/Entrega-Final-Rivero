@@ -17,6 +17,7 @@
 </form>
 
 <h2>Calzados Publicados</h2>
+{% if calzados %}
 {% for calzado in calzados %}
 <li> 
     Color: {{calzado.color}} - Marca: {{calzado.marca}} - Talle: {{calzado.talle}}
@@ -25,4 +26,7 @@
 <button> <a class="navbar-brand" href={% url 'inicio:mostrar_calzado' calzado.id %}>Ver Mas</a> </button>
 </li>
 {% endfor %}
+{% else %}
+<p>No se encontraron datos cargados.</p>
+{% endif %}
 {% endblock contenido %}

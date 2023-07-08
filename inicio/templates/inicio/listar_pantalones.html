@@ -17,6 +17,7 @@
 </form>
 
 <h2>Pantalones Publicados</h2>
+{% if pantalones %}
 {% for pantalon in pantalones %}
 <li> 
     Color: {{pantalon.color}} - Marca: {{pantalon.marca}} - Talle: {{pantalon.talle}}
@@ -25,4 +26,7 @@
     <button> <a class="navbar-brand" href={% url 'inicio:mostrar_pantalon' pantalon.id %}>Ver Mas</a> </button>
 </li>
 {% endfor %}
+{% else %}
+<p>No se encontraron datos cargados.</p>
+{% endif %}
 {% endblock contenido %}
