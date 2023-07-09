@@ -59,16 +59,23 @@ def editar_perfil(request):
     if request.method == 'POST':
         formulario = MiEditarUsuariosForm(request.POST, request.FILES, instance=request.user)
         if formulario.is_valid():
-            
             avatar = formulario.cleaned_data.get('avatar')
+            descripcion = formulario.cleaned_data.get('descripcion')
+            link_web = formulario.cleaned_data.get('link_web')
             if avatar:
                 info_extra_user.avatar = avatar
+                info_extra_user.save()
+            elif descripcion:
+                info_extra_user.descripcion = descripcion
+                info_extra_user.save()
+            elif link_web:
+                info_extra_user.link_web = link_web
                 info_extra_user.save()
             
             formulario.save()
             return redirect('inicio:inicio')   
     else:    
-        formulario = MiEditarUsuariosForm(initial= {'avatar': info_extra_user.avatar}, instance=request.user)
+        formulario = MiEditarUsuariosForm(initial= {'avatar': info_extra_user.avatar, 'descripcion': info_extra_user.descripcion, 'link_web': info_extra_user.link_web}, instance=request.user)
         
     return render(request, 'usuario/editar_perfil.html', {'formulario': formulario})
 
