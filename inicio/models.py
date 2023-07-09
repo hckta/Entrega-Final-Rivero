@@ -14,7 +14,7 @@ class Pantalon(models.Model):
     talle = models.CharField(max_length=2)
     descripcion = RichTextField(blank=True, null=True)
     imagen = models.ImageField(upload_to='pantalones',blank=True, null=True)
-    # fecha_publicacion = models.DateField(blank=True, null=True)
+    fecha_publicacion = models.DateField(blank=True, null=True)
         
     
 class Remera(models.Model):
@@ -33,4 +33,4 @@ class Calzado(models.Model):
     talle = models.IntegerField()
     descripcion = RichTextField(null=True)
     imagen = models.ImageField(upload_to='calzados',blank=True, null=True)
-    # fecha_publicacion = models.DateField(null=True)
+    fecha_publicacion = models.DateField(null=True)

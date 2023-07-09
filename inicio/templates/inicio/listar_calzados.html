@@ -20,7 +20,7 @@
 {% if calzados %}
 {% for calzado in calzados %}
 <li> 
-    Color: {{calzado.color}} - Marca: {{calzado.marca}} - Talle: {{calzado.talle}}
+    Color: {{calzado.color}} - Marca: {{calzado.marca}} - Talle: {{calzado.talle}} - Fecha de Publicacion: {{calzado.fecha_publicacion}}
 <button> <a class="navbar-brand" href={% url 'inicio:eliminar_calzado' calzado.id %}>Eliminar</a> </button>
 <button> <a class="navbar-brand" href={% url 'inicio:modificar_calzado' calzado.id %}>Modificar</a> </button>
 <button> <a class="navbar-brand" href={% url 'inicio:mostrar_calzado' calzado.id %}>Ver Mas</a> </button>

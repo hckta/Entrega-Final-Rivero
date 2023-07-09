@@ -11,16 +11,16 @@ class PublicarPantalonForm(forms.Form):
     color = forms.CharField(max_length=15)
     marca = forms.CharField(max_length=10)
     talle = forms.CharField(max_length=2)
-    descripcion = forms.CharField(required=False, max_length=20)
+    descripcion = forms.CharField(required=False, max_length=100)
     imagen = forms.ImageField(required=False)
-    # fecha_publicacion = forms.DateField(required=False, widget=DateInput(attrs={'type': 'date'}))
+    fecha_publicacion = forms.DateField(required=False, widget=DateInput( format= '%d%m%Y', attrs={'type': 'date'}), input_formats= ('%d%m%Y',))
     
 class PublicarRemeraForm(forms.Form):
     
     color = forms.CharField(max_length=15)
     marca = forms.CharField(max_length=10)
     talle = forms.CharField(max_length=2)
-    descripcion = forms.CharField(max_length=100)
+    descripcion = forms.CharField(required=False, max_length=100)
     imagen = forms.ImageField(required=False)
     fecha_publicacion = forms.DateField(required=False, widget=DateInput (attrs={'type': 'date'}))
     
@@ -30,9 +30,9 @@ class PublicarCalzadoForm(forms.Form):
     color = forms.CharField(max_length=15)
     marca = forms.CharField(max_length=10)
     talle = forms.IntegerField()
-    descripcion = forms.CharField(max_length=100)
+    descripcion = forms.CharField(widget=RichTextField())
     imagen = forms.ImageField(required=False)
-    # fecha_publicacion = forms.DateField(required=False, widget=DateInput (attrs={'type': 'date'}))
+    fecha_publicacion = forms.DateField(required=False, widget=DateInput( format= '%d%m%Y', attrs={'type': 'date'}), input_formats= ('%d%m%Y',))
     
 #Formularios de Busqueda
     
@@ -54,16 +54,16 @@ class ModificarPantalonForm(forms.Form):
     talle = forms.CharField(max_length=2)
     descripcion = forms.CharField(max_length=100)
     imagen = forms.ImageField(required=False)
-    # fecha_publicacion = forms.DateField(required=False, widget=DateInput (attrs={'type': 'date'}))
     ...
     
 class ModificarRemeraForm(ModificarPantalonForm):
     imagen = forms.ImageField(required=False)
+    descripcion = forms.CharField(required=False, max_length=20)
     ...
     
 class ModificarCalzadoForm(ModificarPantalonForm):
     imagen = forms.ImageField(required=False)
-    descripcion = RichTextField()
+    descripcion = forms.CharField(required=False, max_length=100)
     talle = forms.IntegerField()
     ...
     

@@ -20,7 +20,7 @@
 {% if pantalones %}
 {% for pantalon in pantalones %}
 <li> 
-    Color: {{pantalon.color}} - Marca: {{pantalon.marca}} - Talle: {{pantalon.talle}}
+    Color: {{pantalon.color}} - Marca: {{pantalon.marca}} - Talle: {{pantalon.talle}} - Fecha de Publicacion: {{pantalon.fecha_publicacion}}
     <button> <a class="navbar-brand" href={% url 'inicio:eliminar_pantalon' pantalon.id %}>Eliminar</a> </button>
     <button> <a class="navbar-brand" href={% url 'inicio:modificar_pantalon' pantalon.id %}>Modificar</a> </button>
     <button> <a class="navbar-brand" href={% url 'inicio:mostrar_pantalon' pantalon.id %}>Ver Mas</a> </button>

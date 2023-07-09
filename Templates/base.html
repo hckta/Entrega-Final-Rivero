@@ -22,7 +22,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
-                <a class="navbar-brand" href={% url 'inicio:inicio' %}>Inicio</a>
+                <a class="btn btn-success" href={% url 'inicio:inicio' %}>Inicio</a>
                 {% comment %} <a class="btn btn-primary" href={% url 'inicio:publicar_pantalon' %}>Publicar Pantalon</a>
                 <a class="btn btn-primary" href={% url 'inicio:publicar_remera' %}>Publicar Remera</a>
                 <a class="btn btn-primary" href={% url 'inicio:publicar_calzado' %}>Publicar Calzado</a> {% endcomment %}
@@ -35,7 +35,7 @@
                 {% endif %}
                 <a class="navbar-brand" href="{% url 'usuario:mostrar_perfil' pk=request.user.pk %}">{{ request.user.username }}</a>
                 <a class="btn btn-secondary" href={% url 'usuario:logout' %}>Logout</a>
-                <a class="btn btn-secondary" href={% url 'usuario:acerca_de_mi' %}>Acerca De Mi</a>
+                <a class="btn btn-warning" href={% url 'usuario:acerca_de_mi' %}>Acerca De Mi</a>
                 {% else %}
                 <a class="btn btn-primary" href={% url 'usuario:login' %}>Login</a>
                 <a class="btn btn-primary" href={% url 'usuario:registrarse' %}>Registrarse</a>

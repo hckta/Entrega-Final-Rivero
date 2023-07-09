@@ -191,7 +191,7 @@ class MostrarCalzado(LoginRequiredMixin,DetailView):
 class PublicarPantalon(LoginRequiredMixin,CreateView):
     model = Pantalon
     template_name = 'inicio/CBV/publicar_pantalon_CBV.html'
-    fields = ['color', 'marca', 'talle', 'descripcion', 'imagen']
+    fields = ['color', 'marca', 'talle', 'descripcion','fecha_publicacion', 'imagen']
     success_url = reverse_lazy('inicio:listar_pantalones')
     
 # Decidi, en este caso, usar una vista como funcion para poder mostrar el uso de Datefield con el calendario en el campo fecha_publicacion.
@@ -206,7 +206,7 @@ class PublicarPantalon(LoginRequiredMixin,CreateView):
 class PublicarCalzado(LoginRequiredMixin, CreateView):
     model = Calzado
     template_name = 'inicio/CBV/publicar_calzado_CBV.html'
-    fields = ['color', 'marca', 'talle', 'descripcion', 'imagen']
+    fields = ['color', 'marca', 'talle', 'descripcion', 'fecha_publicacion', 'imagen']
     success_url = reverse_lazy('inicio:listar_calzados')
     
 
