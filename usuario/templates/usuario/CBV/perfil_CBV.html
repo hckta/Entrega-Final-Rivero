@@ -15,7 +15,7 @@ Perfil
 <li> Nombre: {{user.first_name}} </li>
 <li> Apellido: {{user.last_name}} </li>
 <li> Descripcion: {{user.infoextra.descripcion}} </li>
-<li> LinkWeb: {{user.infoextra.link_web}} </li>
+<li> LinkWeb: <button type="button" class="btn btn-link"> {{user.infoextra.link_web}}</button> </li>
 
 <li> <button> <a class="navbar-brand" href={% url 'usuario:editar_perfil'%}>Editar Perfil</a> </button> </li>
 {% endblock contenido %}
