@@ -1,8 +1,7 @@
 # Entrega-Final-Rivero
 
-- En este proyecto se propone una pagina web que le permite al usuario acceder a la publicación de 3 tipos de productos, pantalones, remeras y calzados.
-- Para ejecutar este proyecto es necesario instalar en su entorno local la configuracion del especificada en el archivo 'requirements.txt'.
-Para su instalacion puede ejecutarse el comando 'pip install Django'
+- En este proyecto se propone una pagina web que mediante el registro de usuarios se le brinde acceso a la publicación de 3 tipos de productos, pantalones, remeras y calzados.
+- Para ejecutar este proyecto es necesario instalar en su entorno local la configuracion especificada en el archivo 'requirements.txt'.
 
 - Para la utilizacion de este proyecto debe utilizarse el comando 'python manage.py runserver' de forma que se levante el proyecto en django, luego podran acceder a la web de inicio. 
 
