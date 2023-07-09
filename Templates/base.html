@@ -35,6 +35,7 @@
                 {% endif %}
                 <a class="navbar-brand" href="{% url 'usuario:mostrar_perfil' pk=request.user.pk %}">{{ request.user.username }}</a>
                 <a class="btn btn-secondary" href={% url 'usuario:logout' %}>Logout</a>
+                <a class="btn btn-secondary" href={% url 'usuario:acerca_de_mi' %}>Acerca De Mi</a>
                 {% else %}
                 <a class="btn btn-primary" href={% url 'usuario:login' %}>Login</a>
                 <a class="btn btn-primary" href={% url 'usuario:registrarse' %}>Registrarse</a>

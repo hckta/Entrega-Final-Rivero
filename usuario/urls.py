@@ -12,5 +12,7 @@ urlpatterns = [
     path('perfil/editar/', views.editar_perfil, name='editar_perfil'),
     path('perfil/editar/password/', views.ModificarPass.as_view(), name='modificar_pass'),
     
+    path('about/', views.AcercaDeMi.as_view(), name='acerca_de_mi'),
+    
     
     ]

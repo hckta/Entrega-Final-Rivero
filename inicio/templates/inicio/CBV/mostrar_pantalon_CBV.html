@@ -11,7 +11,8 @@ Descripcion Pantalon
 <li> Color: {{pantalon.color}}</li>
 <li> Marca: {{pantalon.marca}}</li>
 <li> Talle: {{pantalon.talle}}</li>
-<li>Autor: {{user.username}} </li>
+<li> Autor: {{user.username}} </li>
+<li> Imagen:  <img src={{request.pantalon.imagen.url}} alt="" height='200mp'> </li>
 {% comment %} <li> Fecha de Publicacion: {{pantalon.fecha_publicacion}}</li> {% endcomment %}
 <li> Desripcion: {{pantalon.descripcion| safe}}</li>
 

@@ -12,6 +12,7 @@ class PublicarPantalonForm(forms.Form):
     marca = forms.CharField(max_length=10)
     talle = forms.CharField(max_length=2)
     descripcion = forms.CharField(required=False, max_length=20)
+    imagen = forms.ImageField(required=False)
     # fecha_publicacion = forms.DateField(required=False, widget=DateInput(attrs={'type': 'date'}))
     
 class PublicarRemeraForm(forms.Form):
@@ -20,6 +21,7 @@ class PublicarRemeraForm(forms.Form):
     marca = forms.CharField(max_length=10)
     talle = forms.CharField(max_length=2)
     descripcion = forms.CharField(max_length=100)
+    imagen = forms.ImageField(required=False)
     fecha_publicacion = forms.DateField(required=False, widget=DateInput (attrs={'type': 'date'}))
     
     
@@ -29,6 +31,7 @@ class PublicarCalzadoForm(forms.Form):
     marca = forms.CharField(max_length=10)
     talle = forms.IntegerField()
     descripcion = forms.CharField(max_length=100)
+    imagen = forms.ImageField(required=False)
     # fecha_publicacion = forms.DateField(required=False, widget=DateInput (attrs={'type': 'date'}))
     
 #Formularios de Busqueda
@@ -50,13 +53,16 @@ class ModificarPantalonForm(forms.Form):
     marca = forms.CharField(max_length=10)
     talle = forms.CharField(max_length=2)
     descripcion = forms.CharField(max_length=100)
+    imagen = forms.ImageField(required=False)
     # fecha_publicacion = forms.DateField(required=False, widget=DateInput (attrs={'type': 'date'}))
     ...
     
 class ModificarRemeraForm(ModificarPantalonForm):
+    imagen = forms.ImageField(required=False)
     ...
     
 class ModificarCalzadoForm(ModificarPantalonForm):
+    imagen = forms.ImageField(required=False)
     descripcion = RichTextField()
     talle = forms.IntegerField()
     ...

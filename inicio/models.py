@@ -13,6 +13,7 @@ class Pantalon(models.Model):
     marca = models.CharField(max_length=10)
     talle = models.CharField(max_length=2)
     descripcion = RichTextField(blank=True, null=True)
+    imagen = models.ImageField(upload_to='pantalones',blank=True, null=True)
     # fecha_publicacion = models.DateField(blank=True, null=True)
         
     
@@ -22,6 +23,7 @@ class Remera(models.Model):
     marca = models.CharField(max_length=10)
     talle = models.CharField(max_length=2)
     descripcion = RichTextField(null=True)
+    imagen = models.ImageField(upload_to='remeras',blank=True, null=True)
     fecha_publicacion = models.DateField(null=True)
     
 class Calzado(models.Model):
@@ -30,4 +32,5 @@ class Calzado(models.Model):
     marca = models.CharField(max_length=10)
     talle = models.IntegerField()
     descripcion = RichTextField(null=True)
+    imagen = models.ImageField(upload_to='calzados',blank=True, null=True)
     # fecha_publicacion = models.DateField(null=True)

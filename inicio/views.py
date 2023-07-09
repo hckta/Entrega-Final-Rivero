@@ -32,7 +32,7 @@ def inicio(request):
 @login_required    
 def publicar_remera(request):
     if request.method == 'POST':
-        formulario = PublicarRemeraForm(request.POST)
+        formulario = PublicarRemeraForm(request.POST, request.FILES)
         if formulario.is_valid():
             info = formulario.cleaned_data
             remera = Remera(color=info['color'],marca=info['marca'],talle=info['talle'],descripcion=info['descripcion'],fecha_publicacion=info['fecha_publicacion'])
@@ -47,7 +47,7 @@ def publicar_remera(request):
 @login_required    
 def publicar_calzado(request):
     if request.method == 'POST':
-        formulario = PublicarCalzadoForm(request.POST)
+        formulario = PublicarCalzadoForm(request.POST, request.FILES)
         if formulario.is_valid():
             info = formulario.cleaned_data
             calzado = Calzado(color=info['color'],marca=info['marca'],talle=info['talle'],descripcion=info['descripcion'],fecha_publicacion=info['fecha_publicacion'])
@@ -136,18 +136,19 @@ def modificar_remera(request, remera_id):
     remera_a_modificar = Remera.objects.get(id=remera_id)
     
     if request.method == 'POST':
-        formulario = ModificarRemeraForm(request.POST)
+        formulario = ModificarRemeraForm(request.POST, request.FILES)
         if formulario.is_valid():
             info = formulario.cleaned_data
             remera_a_modificar.color = info['color']
             remera_a_modificar.marca = info['marca']
             remera_a_modificar.talle = info['talle']
             remera_a_modificar.descripcion = info['descripcion']
+            remera_a_modificar.imagen = info['imagen']
             remera_a_modificar.save()
             return redirect('inicio:listar_remeras')
         else:
             return render(request, 'inicio/modificar_remera.html', {'formulario': formulario})
-    formulario = ModificarRemeraForm(initial={'color': remera_a_modificar.color, 'marca': remera_a_modificar.marca, 'talle': remera_a_modificar.talle, 'descripcion': remera_a_modificar.descripcion})
+    formulario = ModificarRemeraForm(initial={'color': remera_a_modificar.color, 'marca': remera_a_modificar.marca, 'talle': remera_a_modificar.talle, 'descripcion': remera_a_modificar.descripcion, 'imagen': remera_a_modificar.imagen})
     return render(request, 'inicio/modificar_remera.html', {'formulario': formulario})
 
 # @login_required    
@@ -190,7 +191,7 @@ class MostrarCalzado(LoginRequiredMixin,DetailView):
 class PublicarPantalon(LoginRequiredMixin,CreateView):
     model = Pantalon
     template_name = 'inicio/CBV/publicar_pantalon_CBV.html'
-    fields = ['color', 'marca', 'talle', 'descripcion']
+    fields = ['color', 'marca', 'talle', 'descripcion', 'imagen']
     success_url = reverse_lazy('inicio:listar_pantalones')
     
 # Decidi, en este caso, usar una vista como funcion para poder mostrar el uso de Datefield con el calendario en el campo fecha_publicacion.
@@ -205,14 +206,14 @@ class PublicarPantalon(LoginRequiredMixin,CreateView):
 class PublicarCalzado(LoginRequiredMixin, CreateView):
     model = Calzado
     template_name = 'inicio/CBV/publicar_calzado_CBV.html'
-    fields = ['color', 'marca', 'talle', 'descripcion']
+    fields = ['color', 'marca', 'talle', 'descripcion', 'imagen']
     success_url = reverse_lazy('inicio:listar_calzados')
     
 
 class ModificarPantalon(LoginRequiredMixin, UpdateView):
     model = Pantalon
     template_name = 'inicio/CBV/modificar_pantalon_CBV.html'
-    fields = ['color', 'marca', 'talle', 'descripcion',]
+    fields = ['color', 'marca', 'talle', 'descripcion', 'imagen']
     success_url = reverse_lazy('inicio:listar_pantalones')
     
 #Esta vista no esta activa, no se usara ya que en esta se usara el calendario para introducir la fecha
@@ -225,8 +226,10 @@ class ModificarPantalon(LoginRequiredMixin, UpdateView):
 class ModificarCalzado(LoginRequiredMixin, UpdateView):
     model = Calzado
     template_name = 'inicio/CBV/modificar_calzado_CBV.html'
-    fields = ['color', 'marca', 'talle', 'descripcion']
+    fields = ['color', 'marca', 'talle', 'descripcion', 'imagen']
     success_url = reverse_lazy('inicio:listar_calzados')
+    
+    
     
     
 

@@ -26,4 +26,5 @@ urlpatterns = [
     path('pantalon/modificar/<int:pk>/', views.ModificarPantalon.as_view(), name='modificar_pantalon'),
     # path('remera/modificar/<int:pk>/', views.ModificarRemera.as_view(), name='modificar_remera'),
     path('calzado/modificar/<int:pk>/', views.ModificarCalzado.as_view(), name='modificar_calzado'),
+    
 ]

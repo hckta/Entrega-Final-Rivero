@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
 from usuario.models import InfoExtra
+from django.views.generic import TemplateView
 # Create your views here.
 
 def login(request):
@@ -53,6 +54,8 @@ class MostrarPerfil(LoginRequiredMixin, DetailView):
     template_name = "usuario/CBV/perfil_CBV.html"
     context_object_name = 'usuario'
     
+
+    
 @login_required
 def editar_perfil(request):
     info_extra_user = request.user.infoextra
@@ -64,18 +67,16 @@ def editar_perfil(request):
             link_web = formulario.cleaned_data.get('link_web')
             if avatar:
                 info_extra_user.avatar = avatar
-                info_extra_user.save()
-            elif descripcion:
+            if descripcion:
                 info_extra_user.descripcion = descripcion
-                info_extra_user.save()
-            elif link_web:
+            if link_web:
                 info_extra_user.link_web = link_web
-                info_extra_user.save()
-            
+                
+            info_extra_user.save()
             formulario.save()
             return redirect('inicio:inicio')   
     else:    
-        formulario = MiEditarUsuariosForm(initial= {'avatar': info_extra_user.avatar, 'descripcion': info_extra_user.descripcion, 'link_web': info_extra_user.link_web}, instance=request.user)
+        formulario = MiEditarUsuariosForm(initial= {'avatar': info_extra_user.avatar,'descripcion': info_extra_user.descripcion, 'link_web': info_extra_user.link_web}, instance=request.user)
         
     return render(request, 'usuario/editar_perfil.html', {'formulario': formulario})
 
@@ -83,3 +84,10 @@ def editar_perfil(request):
 class ModificarPass(LoginRequiredMixin,PasswordChangeView):
     template_name = 'usuario/modificar_pass.html'
     success_url = reverse_lazy('usuario:editar_perfil')
+    
+    
+class AcercaDeMi(LoginRequiredMixin, TemplateView):
+    model = User
+    template_name = "usuario/acerca_de_mi.html"
+    context_object_name = 'usuario'
+    
