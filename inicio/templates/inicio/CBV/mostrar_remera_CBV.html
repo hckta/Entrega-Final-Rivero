@@ -14,5 +14,9 @@ Descripcion Remera
 <li>Autor: {{user.username}} </li>
 <li>Fecha de Publicacion: {{remera.fecha_publicacion}}</li>
 <li>Desripcion: {{remera.descripcion| safe}}</li>
-<li>Imagen: <img src={{request.remera.imagen.url}} alt="" height='200mp'> </li>
+{% if remera.imagen %}
+    <li>Imagen: <img src= {{ remera.imagen.url }} alt="" height="200px"></li>
+  {% else %}
+    <li>Imagen: No se encontraron imagenes cargadas</li>
+  {% endif %}
 {% endblock contenido %}

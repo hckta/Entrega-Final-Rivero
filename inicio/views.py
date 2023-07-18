@@ -5,6 +5,8 @@ from django.views.generic.detail import DetailView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.list import ListView
+
 from django.urls import reverse_lazy
 # Create your views here.
 
@@ -35,7 +37,7 @@ def publicar_remera(request):
         formulario = PublicarRemeraForm(request.POST, request.FILES)
         if formulario.is_valid():
             info = formulario.cleaned_data
-            remera = Remera(color=info['color'],marca=info['marca'],talle=info['talle'],descripcion=info['descripcion'],fecha_publicacion=info['fecha_publicacion'])
+            remera = Remera(color=info['color'],marca=info['marca'],talle=info['talle'],descripcion=info['descripcion'],imagen = info['imagen'],fecha_publicacion=info['fecha_publicacion'])
             remera.save()
             return redirect('inicio:listar_remeras') 
         else:
@@ -50,7 +52,7 @@ def publicar_calzado(request):
         formulario = PublicarCalzadoForm(request.POST, request.FILES)
         if formulario.is_valid():
             info = formulario.cleaned_data
-            calzado = Calzado(color=info['color'],marca=info['marca'],talle=info['talle'],descripcion=info['descripcion'],fecha_publicacion=info['fecha_publicacion'])
+            calzado = Calzado(color=info['color'],marca=info['marca'],talle=info['talle'],descripcion=info['descripcion'],imagen = info['imagen'],fecha_publicacion=info['fecha_publicacion'])
             calzado.save()
             return redirect('inicio:listar_calzados')  
         else:
@@ -228,6 +230,9 @@ class ModificarCalzado(LoginRequiredMixin, UpdateView):
     template_name = 'inicio/CBV/modificar_calzado_CBV.html'
     fields = ['color', 'marca', 'talle', 'descripcion', 'imagen']
     success_url = reverse_lazy('inicio:listar_calzados')
+    
+class CargarImagenes(LoginRequiredMixin,ListView):
+    ...
     
     
     

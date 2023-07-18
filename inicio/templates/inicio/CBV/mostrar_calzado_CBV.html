@@ -14,5 +14,9 @@ Descripcion Calzado
 <li>Autor: {{user.username}} </li>
 <li>Fecha de Publicacion: {{calzado.fecha_publicacion}}</li>
 <li>Desripcion: {{calzado.descripcion | safe}} </li>
-<li>Imagen: <img src={{request.calzado.imagen.url}} alt="" height='200mp'> </li>
+{% if calzado.imagen %}
+    <li>Imagen: <img src= {{ calzado.imagen.url }} alt="" height="200px"></li>
+  {% else %}
+    <li>Imagen: No se encontraron imagenes cargadas</li>
+  {% endif %}
 {% endblock contenido %}

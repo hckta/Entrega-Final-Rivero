@@ -12,8 +12,11 @@ Descripcion Pantalon
 <li> Marca: {{pantalon.marca}}</li>
 <li> Talle: {{pantalon.talle}}</li>
 <li> Autor: {{user.username}} </li>
-<li> Imagen:  <img src={{request.pantalon.imagen.url}} alt="" height='200mp'> </li>
 <li> Fecha de Publicacion: {{pantalon.fecha_publicacion}}</li>
 <li> Desripcion: {{pantalon.descripcion| safe}}</li>
-
+{% if pantalon.imagen %}
+    <li> Imagen: <img src= {{ pantalon.imagen.url }} alt="" height="200px"></li>
+  {% else %}
+    <li> Imagen: No se encontraron imagenes cargadas</li>
+  {% endif %}
 {% endblock contenido %}
