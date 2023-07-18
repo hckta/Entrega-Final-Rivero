@@ -8,15 +8,15 @@ Descripcion Remera
 {% endblock h1_header %}
 
 {% block contenido %}
-<li>Color: {{remera.color}}</li>
+<li> Color: {{remera.color}}</li>
 <li> Marca: {{remera.marca}}</li>
-<li>Talle: {{remera.talle}}</li>
-<li>Autor: {{user.username}} </li>
-<li>Fecha de Publicacion: {{remera.fecha_publicacion}}</li>
-<li>Desripcion: {{remera.descripcion| safe}}</li>
+<li> Talle: {{remera.talle}}</li>
 {% if remera.imagen %}
     <li>Imagen: <img src= {{ remera.imagen.url }} alt="" height="200px"></li>
   {% else %}
     <li>Imagen: No se encontraron imagenes cargadas</li>
   {% endif %}
+<li> Autor: {{user.username}} </li>
+<li> Desripcion: {{remera.descripcion| safe}}</li>
+<li> Fecha de Publicacion: {{remera.fecha_publicacion}}</li>
 {% endblock contenido %}
